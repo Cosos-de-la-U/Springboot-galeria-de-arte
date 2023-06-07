@@ -19,6 +19,7 @@ public class Oferta {
 
     private double monto;
     private Date fecha;
+    private boolean aceptado;
 
     @ManyToOne(cascade =  CascadeType.ALL)
     private Obra obra;
