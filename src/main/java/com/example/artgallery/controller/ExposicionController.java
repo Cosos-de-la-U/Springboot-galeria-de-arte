@@ -2,6 +2,7 @@ package com.example.artgallery.controller;
 
 import com.example.artgallery.model.Exposicion;
 import com.example.artgallery.model.Obra;
+import com.example.artgallery.model.Oferta;
 import com.example.artgallery.repository.ObraRepository;
 import com.example.artgallery.service.ExposicionService;
 import jakarta.validation.constraints.Null;
@@ -43,24 +44,33 @@ public class ExposicionController {
         return ResponseEntity.ok(exposicion);
     }
 
+//    @PostMapping
+//    public ResponseEntity<Exposicion> postExposicion(@RequestBody Exposicion exposicion) {
+//        List<Obra> obras = exposicion.getObras();
+//        if (obras != null) {
+//            for (Obra obra : obras) {
+//                Long id = obra.getId();
+//                Obra existingObra = obraRepository.findById(id).orElse(null);
+//                if (existingObra != null) {
+//                    existingObra.getExposiciones().add(exposicion);
+//                    //exposicion.getObras().add(existingObra); // Update the relationship on the Exposicion side
+//                }
+//            }
+//        }
+//        Exposicion exposicionPost = exposicionService.postExposicion(exposicion);
+//        if (exposicionPost == null) {
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+//        }
+//        return ResponseEntity.ok(exposicionPost);
+//    }
+
     @PostMapping
-    public ResponseEntity<Exposicion> postExposicion(@RequestBody Exposicion exposicion) {
-        List<Obra> obras = exposicion.getObras();
-        if (obras != null) {
-            for (Obra obra : obras) {
-                Long id = obra.getId();
-                Obra existingObra = obraRepository.findById(id).orElse(null);
-                if (existingObra != null) {
-                    existingObra.getExposiciones().add(exposicion);
-                    //exposicion.getObras().add(existingObra); // Update the relationship on the Exposicion side
-                }
-            }
-        }
-        Exposicion exposicionPost = exposicionService.postExposicion(exposicion);
-        if (exposicionPost == null) {
+    public ResponseEntity<Exposicion> postOferta(@RequestBody Exposicion exposicion){
+        Exposicion exposicionaPost = exposicionService.postExposicion(exposicion);
+        if(exposicionaPost == null){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
-        return ResponseEntity.ok(exposicionPost);
+        return ResponseEntity.ok(exposicion);
     }
 
     @DeleteMapping("/{id}")
