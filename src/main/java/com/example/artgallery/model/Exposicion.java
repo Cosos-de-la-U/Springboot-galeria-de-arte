@@ -1,5 +1,6 @@
 package com.example.artgallery.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,11 +29,12 @@ public class Exposicion {
             CascadeType.REFRESH,
             CascadeType.PERSIST
     })*/
-    @ManyToMany(cascade =  CascadeType.ALL)
-    @JoinTable(
-            name = "exposicion_obra",
-            joinColumns = @JoinColumn(name = "exposicion_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "obra_id", referencedColumnName = "id")
-    )
-    private List<Obra> obras;
+//    @ManyToMany(cascade =  CascadeType.ALL)
+//    @JoinTable(
+//            name = "exposicion_obra",
+//            joinColumns = @JoinColumn(name = "exposicion_id", referencedColumnName = "id"),
+//            inverseJoinColumns = @JoinColumn(name = "obra_id", referencedColumnName = "id")
+//    )
+    @ManyToOne(cascade =  CascadeType.ALL)
+    private Obra obras;
 }

@@ -1,5 +1,6 @@
 package com.example.artgallery.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,6 +25,7 @@ public class Obra {
     @ManyToOne(cascade =  CascadeType.ALL)
     private Propietario propietario;
 
-    @ManyToMany(mappedBy = "obras")
-    private List<Exposicion> exposiciones;
+    //@ManyToMany(mappedBy = "obras")
+    //@JsonIgnore
+    //private List<Exposicion> exposiciones;
 }

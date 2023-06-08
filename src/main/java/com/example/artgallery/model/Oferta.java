@@ -1,5 +1,6 @@
 package com.example.artgallery.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jdk.jfr.Name;
 import lombok.AllArgsConstructor;
