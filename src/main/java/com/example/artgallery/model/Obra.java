@@ -16,16 +16,16 @@ public class Obra {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     private String numeroRegistro;
     private String titulo;
     private String artista;
     private String image;
     private String estilo;
     private double precioSalida;
+    
+    @ManyToOne(cascade =  CascadeType.ALL)
+    private Exposicion exposicion;
     @ManyToOne(cascade =  CascadeType.ALL)
     private Propietario propietario;
-
-    //@ManyToMany(mappedBy = "obras")
-    //@JsonIgnore
-    //private List<Exposicion> exposiciones;
 }

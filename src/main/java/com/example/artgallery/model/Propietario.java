@@ -1,9 +1,13 @@
 package com.example.artgallery.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
+
+import java.util.List;
 
 @Entity
 @Data
@@ -16,4 +20,8 @@ public class Propietario {
 
     private String nombre;
     private String direccion;
+
+    @OneToMany
+    @JsonIgnore
+    private List<Obra> obra;
 }
